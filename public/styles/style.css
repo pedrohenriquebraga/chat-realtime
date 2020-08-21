@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +15,7 @@ body {
 header {
     width: 100%;
     display: flex;
-    font-family: cursive;
+    font-family: 'Patrick Hand', cursive;
     flex-direction: column;
     align-items: center;
     background-image: linear-gradient(to right, blue, #5050eb, #8c8cf8);
@@ -39,6 +41,7 @@ header {
     border: 1px solid white;
     padding: 8px;
     overflow-y: auto;
+    overflow-x: hidden;
     background-color: #080846;
     border-radius: 5px;
 }
@@ -48,6 +51,7 @@ header {
     padding: 5px;
     font-size: 16px;
     color: white;
+    word-break: break-all;
 }
 
 #chat #messages .message strong::after {
@@ -58,15 +62,18 @@ header {
     margin-right: 5px;
     font-size: 18px;
     text-transform: capitalize;
+    color: cornflowerblue;
 }
 
 #chat #messages .message #date {
     color: grey;
-    font-size: 12px;
+    font-size: 11px;
     margin-left: 5px;
+    font-weight: lighter;
 }
 
-#chat input, button {
+#chat textarea, input, button {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     width: 80%;
     min-width: 275px;
     max-width: 800px;
@@ -74,6 +81,7 @@ header {
     margin: 10px;
     padding: 10px;
     border: none;
+    resize: none;
 }
 
 ::placeholder {

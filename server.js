@@ -7,9 +7,12 @@ const newDate = new Date()
 
 let messages = []
 
-if (newDate.getDay() % 15 == 0) {
+if (newDate.getDate() % 15 == 0 || messages.length >= 500) {
     for (message in messages) {
         messages.pop()
+        if (messages.length == 0) {
+            break
+        }
     }
 }
 
