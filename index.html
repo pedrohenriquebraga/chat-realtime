@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Chat</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Live Chat</h1>
+      <p>Converse em tempo real!</p>
+    </header>
+    <form id="chat">
+      <input
+        type="text"
+        id="username"
+        placeholder="Digite seu nome"
+        required
+        autofocus
+      />
+
+      <div id="messages"></div>
+
+      <input
+        type="text"
+        id="sendMessage"
+        placeholder="Digite sua mensagem"
+        required
+      />
+      <button type="submit">Enviar Mensagem</button>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+      let socket = io("http://localhost:3000/");
+      function renderMessage(message) {
+        $("#messages").append(
+          `<div class="message"><strong class="name">${message.author}</strong>${message.message}<span id="date">${message.hour}</span></div>`
+        );
+        document.querySelector("#sendMessage").value = "";
+      }
+
+      socket.on("receivedMessage", (message) => {
+        renderMessage(message);
+      });
+
+      socket.on("previousMessage", (messages) => {
+        for (message of messages) {
+          renderMessage(message);
+        }
+      });
+
+      $("#chat").submit(function (event) {
+        event.preventDefault();
+
+        let author = $("#username").val();
+        let message = $("#sendMessage").val();
+
+        if (author.length && message.length) {
+          const newDate = new Date();
+          let date = `${newDate.getHours()}:${newDate.getMinutes()}:${newDate.getSeconds()} (${newDate.getDate()}/${newDate.getMonth()})`
+
+          var messageObj = {
+            author: author,
+            message: message,
+            hour: date
+          };
+        }
+        renderMessage(messageObj);
+        socket.emit("sendMessage", messageObj);
+      });
+    </script>
+  </body>
+</html>
