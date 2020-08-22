@@ -1,4 +1,4 @@
-let socket = io("http://localhost:3000/");
+let socket = io("https://livechat-realtime.herokuapp.com/");
 function renderMessage(message) {
     $("#messages").append(
         `<div class="message"><strong class="name">${message.author}</strong>${message.message}<span id="date">${message.hour}</span></div>`
