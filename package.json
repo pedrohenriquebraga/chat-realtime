@@ -2,9 +2,9 @@
   "name": "chat-realtime",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "author": "Pedro Henrique",
   "license": "MIT",
