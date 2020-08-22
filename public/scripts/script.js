@@ -33,7 +33,7 @@ $("#chat").submit(function (event) {
 
         let dayAndMonth = {
             day: newDate.getDate(),
-            month: newDate.getMonth()
+            month: newDate.getMonth()+1
         }
 
         hours.hour = hours.hour <= 9 ? '0' + hours.hour : hours.hour
