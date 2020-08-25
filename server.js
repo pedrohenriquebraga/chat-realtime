@@ -1,35 +1,42 @@
+// Requires do servidor
+
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const server = require('http').createServer(app)
 const io = require('socket.io')(server)
 
-const newDate = new Date()
+// Iniciando o db
+const mongoose = require('mongoose')
+mongoose.connect(`mongodb+srv://ph:${process.env.MONGODB_PASSWORD}@livechat0.69okr.gcp.mongodb.net/livechat?retryWrites=true&w=majority` || 'mongodb://localhost:27017/livechat', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
-let messages = []
+const messageController = require('./src/controllers/messageController')
 
-if (newDate.getDate() % 15 == 0 || messages.length >= 500) {
-    for (message in messages) {
-        messages.pop()
-        if (messages.length == 0) {
-            break
-        }
-    }
-}
-
+// Define a pasta estática
 app.use(express.static(__dirname + '/public/'))
 
+// Rota principal do app
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
 
-io.on('connection', socket => {
+// Conexão com o socket
+io.on('connection', async socket => {
     console.log('Socket conectado: ' + socket.id)
 
-    socket.emit("previousMessage", messages)
+    // Envio das mensagens antigas
+    socket.emit("previousMessage", await messageController.index())
+
+    // Envio das novas mensagens
     socket.on('sendMessage', data => {
-        messages.push(data)
+        messageController.saveNewMessage(data)
         socket.broadcast.emit("receivedMessage", data)
     })
 })
 
+
+// Ouvi a porta 3000 do servidor
 server.listen(process.env.PORT || 3000)
