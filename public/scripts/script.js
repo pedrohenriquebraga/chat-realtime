@@ -12,8 +12,10 @@ socket.on("receivedMessage", (message) => {
 
 socket.on("previousMessage", (messages) => {
     $("#messages").text('')
-    for (message of messages) {
-        renderMessage(message);
+    if (messages.length > 0) {
+        for (message of messages) {
+            renderMessage(message);
+        }
     }
 });
 
@@ -33,7 +35,7 @@ $("#chat").submit(function (event) {
 
         let dayAndMonth = {
             day: newDate.getDate(),
-            month: newDate.getMonth()+1
+            month: newDate.getMonth() + 1
         }
 
         hours.hour = hours.hour <= 9 ? '0' + hours.hour : hours.hour
@@ -43,7 +45,7 @@ $("#chat").submit(function (event) {
         dayAndMonth.day = dayAndMonth.day <= 9 ? '0' + dayAndMonth.day : dayAndMonth.day
         dayAndMonth.month = dayAndMonth.month <= 9 ? '0' + dayAndMonth.month : dayAndMonth.month
 
-        let date = `${hours.hour}:${hours.minute}:${hours.second}(${dayAndMonth.day}/${dayAndMonth.month})`
+        let date = `${hours.hour}:${hours.minute}:${hours.second} (${dayAndMonth.day}/${dayAndMonth.month})`
 
         var messageObj = {
             author: author,
