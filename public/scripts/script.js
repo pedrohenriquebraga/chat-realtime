@@ -12,11 +12,17 @@ function renderMessage(message) {
         emoji: true
     })
 
+
+
     message.message = converter.makeHtml(message.message)
     $("#messages").append(
         `<div class="message"><strong class="name">${message.author}</strong>${message.message}<span id="date">${message.hour}</span></div>`
     );
-    
+
+}
+
+function stripHTML(text) {
+    return text.replace(/<.*?>/gim, '').replace(/^#/gim, '\\#')
 }
 
 socket.on("receivedMessage", (message) => {
@@ -37,8 +43,8 @@ socket.on("previousMessage", (messages) => {
 $("#chat").submit(function (event) {
     event.preventDefault();
 
-    let author = $("#username").val().replace(/<.*?>/gim, '');
-    let message = $("#sendMessage").val().replace(/<.*?>/gim, '');
+    let author = stripHTML($("#username").val());
+    let message = stripHTML($("#sendMessage").val());
     $("#sendMessage").val("");
 
     if (author.length && message.length) {

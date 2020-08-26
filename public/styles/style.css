@@ -1,115 +1,117 @@
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    width: 100%;
-    height: 100%;
-    background-color: #060633;
+  width: 100%;
+  height: 100%;
+  background-color: #060633;
 }
 
 header {
-    width: 100%;
-    display: flex;
-    font-family: 'Patrick Hand', cursive;
-    flex-direction: column;
-    align-items: center;
-    background-image: linear-gradient(to right, blue, #5050eb, #8c8cf8);
-    color: white;
-    padding: 15px;
+  width: 100%;
+  display: flex;
+  font-family: "Patrick Hand", cursive;
+  flex-direction: column;
+  align-items: center;
+  background-image: linear-gradient(to right, blue, #5050eb, #8c8cf8);
+  color: white;
+  padding: 15px;
 }
 
 #chat {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    height: 80vh;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 80vh;
 }
 
 #chat #messages {
-    width: 80%;
-    height: fit-content;
-    min-width: 275px;
-    max-width: 800px;
-    height: 300px;
-    border: 1px solid white;
-    padding: 8px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    background-color: #080846;
-    border-radius: 5px;
+  width: 80%;
+  height: fit-content;
+  min-width: 275px;
+  max-width: 800px;
+  height: 300px;
+  border: 1px solid white;
+  padding: 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #080846;
+  border-radius: 5px;
 }
 
 #chat #messages .message {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding: 5px;
-    font-size: 16px;
-    color: white;
-    word-break: break-word;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 5px;
+  font-size: 16px;
+  color: white;
+  word-break: break-word;
 }
 
 #chat #messages .message p {
-    display: inline;
+  display: inline;
 }
 
 #chat #messages .message a {
-    color: deepskyblue;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 200ms;
+  color: deepskyblue;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 200ms;
 }
 
 #chat #messages .message a:hover {
-    color: #02a2d8;
+  color: #02a2d8;
 }
 
 #chat #messages .message .name::after {
-    content: ':';
+  content: ":";
 }
 
 #chat #messages .message .name {
-    margin-right: 5px;
-    font-size: 18px;
-    text-transform: capitalize;
-    color: cornflowerblue;
+  margin-right: 5px;
+  font-size: 18px;
+  text-transform: capitalize;
+  color: cornflowerblue;
 }
 
 #chat #messages .message #date {
-    color: grey;
-    font-size: 11px;
-    margin-left: 5px;
-    font-weight: lighter;
+  color: grey;
+  font-size: 11px;
+  margin-left: 5px;
+  font-weight: lighter;
 }
 
-#chat textarea, input, button {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    width: 80%;
-    min-width: 275px;
-    max-width: 800px;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 10px;
-    border: none;
-    resize: none;
+#chat textarea,
+input,
+button {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 80%;
+  min-width: 275px;
+  max-width: 800px;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  border: none;
+  resize: none;
 }
 
 ::placeholder {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 #chat button {
-    margin-top: -5px;
-    background-color: #3434e9;
-    color: white;
-    transition: background-color 200ms;
+  margin-top: -5px;
+  background-color: #3434e9;
+  color: white;
+  transition: background-color 200ms;
 }
 
 #chat button:hover {
-    background-color: #2b2be4;
+  background-color: #2b2be4;
 }

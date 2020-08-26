@@ -22,7 +22,7 @@ app.use(express.static(__dirname + '/public/'))
 
 const date = new Date
 
-if ( date.getHours() >= 3 && date.getDay() >= 30 ) {
+if (date.getHours() >= 3 && date.getDay() >= 30) {
     messageController.removeTheMessages()
 }
 
