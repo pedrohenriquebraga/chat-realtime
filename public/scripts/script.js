@@ -16,7 +16,7 @@ function renderMessage(message) {
     $("#messages").append(
         `<div class="message"><strong class="name">${message.author}</strong>${message.message}<span id="date">${message.hour}</span></div>`
     );
-    document.querySelector("#sendMessage").value = "";
+    $("#sendMessage").val("");
 }
 
 socket.on("receivedMessage", (message) => {
