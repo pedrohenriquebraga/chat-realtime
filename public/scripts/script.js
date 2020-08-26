@@ -22,8 +22,8 @@ socket.on("previousMessage", (messages) => {
 $("#chat").submit(function (event) {
     event.preventDefault();
 
-    let author = $("#username").val();
-    let message = $("#sendMessage").val();
+    let author = $("#username").val().replace(/<.*?>/gim, '');
+    let message = $("#sendMessage").val().replace(/<.*?>/gim, '');
 
     if (author.length && message.length) {
         const newDate = new Date();
