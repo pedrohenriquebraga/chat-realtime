@@ -1,5 +1,18 @@
 let socket = io("https://livechat-realtime.herokuapp.com/");
 function renderMessage(message) {
+    let converter = new showdown.Converter({
+        noHeaderId: true,
+        headerLevelStart: 6,
+        simplifiedAutoLink: true,
+        literalMidWordUnderscores: false,
+        ghCodeBlocks: false,
+        smoothLivePreview: true,
+        simpleLineBreaks: true,
+        openLinksInNewWindow: true,
+        emoji: true
+    })
+
+    message.message = converter.makeHtml(message.message)
     $("#messages").append(
         `<div class="message"><strong class="name">${message.author}</strong>${message.message}<span id="date">${message.hour}</span></div>`
     );
@@ -7,6 +20,8 @@ function renderMessage(message) {
 }
 
 socket.on("receivedMessage", (message) => {
+
+
     renderMessage(message);
 });
 

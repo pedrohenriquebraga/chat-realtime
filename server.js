@@ -18,6 +18,15 @@ const messageController = require('./src/controllers/messageController')
 // Define a pasta estática
 app.use(express.static(__dirname + '/public/'))
 
+// Apagar mensagens
+
+const date = new Date
+
+if ( date.getHours() >= 3 && date.getDay() >= 30 ) {
+    messageController.removeTheMessages()
+}
+
+
 // Rota principal do app
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
