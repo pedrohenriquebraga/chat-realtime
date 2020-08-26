@@ -16,7 +16,7 @@ function renderMessage(message) {
     $("#messages").append(
         `<div class="message"><strong class="name">${message.author}</strong>${message.message}<span id="date">${message.hour}</span></div>`
     );
-    $("#sendMessage").val("");
+    
 }
 
 socket.on("receivedMessage", (message) => {
@@ -39,6 +39,7 @@ $("#chat").submit(function (event) {
 
     let author = $("#username").val().replace(/<.*?>/gim, '');
     let message = $("#sendMessage").val().replace(/<.*?>/gim, '');
+    $("#sendMessage").val("");
 
     if (author.length && message.length) {
         const newDate = new Date();
