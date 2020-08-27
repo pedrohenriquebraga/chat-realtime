@@ -53,6 +53,7 @@ socket.on("receivedMessage", (message) => {
     sendNotification({
         opt: {
             body: `Nova mensagem de ${message.author}`,
+            icon: '/assets/livechat-icon.png'
         },
         title: 'Live Chat',
         link: '/'
