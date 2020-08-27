@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {  
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #060633;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  margin-bottom: 30px;
+  font-family: "Patrick Hand", cursive;
+  flex-direction: column;
+  align-items: center;
+  background-image: linear-gradient(to right, blue, #5050eb, #8c8cf8);
+  color: white;
+  padding: 15px;
+}
+
+#home {
+  text-decoration: none;
+  background-color: #5050eb;
+  padding: 20px;
+  color: white;
+  transition: background-color 200ms;
+}
+
+#home:hover {
+    background-color: #3939e2;
+}
+
+main {
+  background-color: #080846;
+  color: white;
+  box-shadow: 3px 2px 3px #0000006e;
+  border-radius: 10px;
+  width: 70%;
+  min-width: 280px;
+  padding: 8px;
+  margin-top: 30px;
+}
+
+main h1,
+h2,
+h3,
+p,
+div {
+  margin: 15px;
+}
+
+main ul {
+  list-style: none;
+}
+
+main .example {
+  color: black;
+  font-size: 13px;
+  font-weight: normal;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 3px 2px 3px #00000041;
+}
+
+main a {
+  font-weight: bold;
+  color: #5050eb;
+  transition: color 200ms;
+}
+
+main a:hover {
+  color: #3939e2;
+}

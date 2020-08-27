@@ -1,11 +1,172 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Como usar Markdown no Live Chat</title>
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="/styles/use-markdown.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Live Chat</h1>
+      <p>Converse em tempo real!</p>
+    </header>
+    <a href="/" id="home">&larr; Voltar ao Chat</a>
+
+    <main>
+      <h1>Formatando textos no Live Chat</h1>
+      <p>
+        Aqui no <em>Live Chat</em> você pode deixar seus textos mais
+        personalizados formatando eles, ou seja, deixando eles em
+        <strong>negrito</strong>, <em>itálico</em>, emojis etc. Para isso é
+        usado uma linguagem chamada <strong>Markdown</strong>. Aqui você
+        encontrará como usar está linguagem super simples e muito poderosa.
+      </p>
+
+      <h2>O que é Markdown?</h2>
+
+      <p>
+        Markdown é uma linguagem de marcação que permite você formatar um texto,
+        ou seja, deixar ele em <strong>negrito</strong>, <em>itálico</em>, citar
+        mensagens, adicionar links, e muitas outras coisas para deixar sua
+        mensagem mais elegante.
+      </p>
+
+      <h2>Como usar Markdown?</h2>
+
+      <h3>Negrito e <em>Itálico</em></h3>
+
+      <p>
+        A Markdown é uma linguagem conhecida por ser legível e com uma sintaxe
+        fácil. Então aqui vão algumas dicas de como usar ela.
+        <em>Itálico </em>Para deixar um texto em <em>itálico</em>, você deve
+        colocar a mensagem entre 2 asteriscos (*). Exemplo:
+      </p>
+
+      <div class="example">
+        Está é uma *mensagem em itálico* = Está é uma
+        <em>mensagem em itálico</em>.
+      </div>
+
+      <h3>Negrito</h3>
+
+      <p>
+        Para deixar um texto em <strong>negrito</strong>, você deve colocar a
+        mensagem entre 4 asteriscos (*). Exemplo:
+      </p>
+
+      <div class="example">
+        Está é uma **mensagem em negrito** = Está é uma
+        <strong>mensagem em negrito</strong>
+      </div>
+
+      <h3>Negrito com <em>itálico</em></h3>
+
+      <p>
+        Para deixar um texto em <strong>negrito</strong> e <em>itálico </em>ao
+        mesmos tempo, você deve colocar a mensagem entre 6 asteriscos (*).
+        Exemplo:
+      </p>
+
+      <div class="example">
+        Está é uma ***mensagem em negrito e itálico*** = Está é uma
+        <strong>
+          <em> mensagem em negrito e itálico </em>
+        </strong>
+      </div>
+
+      <h2>Links</h2>
+
+      <h3>Links sem formatação</h3>
+
+      <p>Existem 2 formas de adicionar esse tipo de link:</p>
+
+      <ul>
+        <li>
+          <p>
+            Você pode apenas colar o link e enviá-lo normalmente sem fazer nada.
+            Exemplo:
+          </p>
+
+          <div class="example">
+            Acesse o Google: https://google.com/ = Acesse o Google:
+            <a
+              href="https://google.com/"
+              target="_blank"
+              rel="external nofollow"
+              >https://google.com/</a
+            >
+          </div>
+        </li>
+
+        <li>
+          <p>
+            Você também pode colocar o link entre parênteses "(link aqui)", que
+            vai gerar o mesmo resultado acima. Exemplo:
+          </p>
+
+          <div class="example">
+            Acesse o Google: (https://google.com/) = Acesse o Google:
+            <a
+              href="https://google.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >https://google.com/</a
+            >
+          </div>
+        </li>
+      </ul>
+
+      <h3>Links com formatação</h3>
+
+      <p>
+        Caso você não queira que o link apareça, mas sim uma mensagem clicável
+        no lugar, você pode o a mensagem clicável entre colchetes "[]" e logo na
+        frente o link entre parênteses "()". Exemplo:
+      </p>
+
+      <div class="example">
+        Este é um [link clicável](https://google.com/). = Este é um
+        <a href="https://google.com/" target="_blank" rel="noopener noreferrer">
+          link clicável</a
+        >.
+      </div>
+
+      <h3>Links em <em>itálico </em>e/ou negrito</h3>
+
+      <p>
+        Você também pode deixar links em <em>itálico </em>ou negrito, basta
+        seguir as regras que funcionará. Exemplo:
+      </p>
+
+      <div class="example">
+        Este é um *[link clicável em itálico](https://google.com/)* = Este é um
+        <a href="https://google.com/" target="_blank" rel="noopener noreferrer"
+          ><em>link clicável em itálico</em></a
+        >
+      </div>
+
+      <h2>Emojis</h2>
+
+      <p>
+        No Markdown você também pode usar emojis sem precisar ficar copiando e
+        colando de algum lugar ou ficar procurando pelo seu teclado. Basta você
+        seguir este padrão <strong>:nome-do-emoji:</strong> . Estarei deixando um
+        <a href="https://github.com/showdownjs/showdown/wiki/emojis#emoji-list"
+          >link onde você encontrará o nome de cada emoji</a
+        >. Exemplo:
+      </p>
+
+      <div class="example">
+        Eu estou muito feliz :smile: = Eu estou muito feliz 😄
+      </div>
+
+      <p>
+        Em breve você poderá fazer mais coisas em suas mensagens como menções de
+        usuários que estão online, citações de mensagens enviadas e muitas
+        outras novas possibilidades. Gostaria de lembrar que este site está em
+        BETA, então volte sempre aqui para ver novidades.
+      </p>
+    </main>
+  </body>
 </html>
