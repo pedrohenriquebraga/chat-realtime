@@ -6,7 +6,7 @@ const message = mongoose.model('Message')
 module.exports = {
     async index() {
         let messages
-        await message.find({}).then((result) => {
+        await message.find({}).limit(150).then((result) => {
             return messages = result
         }).catch(err => console.error(err))
 
