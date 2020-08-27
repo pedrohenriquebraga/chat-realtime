@@ -3,10 +3,14 @@ messages.prop('scrollTop', messages.prop('scrollHeight'))
 
 let socket = io("https://livechat-realtime.herokuapp.com/");
 
-if (Notification.permission !== 'granted') {
-    alert('Para receber notificações de novas mensagens permita que o site envie notificações!!')
+if (('Notification' in navigator)) {
+    if (Notification.permission !== 'granted') {
+        alert('Para receber notificações de novas mensagens permita que o site envie notificações!!')
 
-    Notification.requestPermission()
+        Notification.requestPermission()
+    }
+} else {
+    alert('Este browser não suporta notificações!!')
 }
 
 function sendNotification(options) {
