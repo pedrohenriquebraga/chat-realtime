@@ -17,7 +17,6 @@ const messageController = require('./controllers/messageController')
 
 // Define a pasta estática
 app.use(express.static('./public/'))
-console.log('/public')
 
 // Apagar mensagens
 
@@ -31,6 +30,10 @@ if (date.getHours() >= 3 && date.getDay() >= 30) {
 // Rota principal do app
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html')
+})
+
+app.get('/use-markdown', (req, res) => {
+    res.sendFile(__dirname + '/views/use-markdown.html')
 })
 
 // Conexão com o socket

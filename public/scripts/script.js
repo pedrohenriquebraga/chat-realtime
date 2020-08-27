@@ -1,5 +1,10 @@
+let messages = $("#messages")
+messages.prop('scrollTop', messages.prop('scrollHeight'))
+
+
 let socket = io("https://livechat-realtime.herokuapp.com/");
 function renderMessage(message) {
+    
     let converter = new showdown.Converter({
         noHeaderId: true,
         headerLevelStart: 6,
@@ -12,12 +17,11 @@ function renderMessage(message) {
         emoji: true
     })
 
-
-
     message.message = converter.makeHtml(message.message)
-    $("#messages").append(
-        `<div class="message"><strong class="name">${message.author}</strong>${message.message}<span id="date">${message.hour}</span></div>`
-    );
+
+    messages.append(`<div class="message"><strong class="name">${message.author}</strong>${message.message}<span id="date">${message.hour}</span></div>`);
+
+    messages.prop('scrollTop', messages.prop('scrollHeight'))
 
 }
 
@@ -32,7 +36,7 @@ socket.on("receivedMessage", (message) => {
 });
 
 socket.on("previousMessage", (messages) => {
-    $("#messages").text('')
+    $('#messages').text('')
     if (messages.length > 0) {
         for (message of messages) {
             renderMessage(message);
