@@ -1,8 +1,27 @@
 let messages = $("#messages")
 messages.prop('scrollTop', messages.prop('scrollHeight'))
 
-
 let socket = io("https://livechat-realtime.herokuapp.com/");
+
+if (Notification.permission !== 'granted') {
+    alert('Para receber notificações de novas mensagens permita que o site envie notificações!!')
+
+    Notification.requestPermission()
+}
+
+function sendNotification(options) {
+    let notify = new Notification(options.title, options.opt)
+    if (Notification.permission == 'granted') {
+        if (options.link !== '') {
+            notify.addEventListener('click', () => {
+                notify.close()
+                window.focus()
+                window.location.href = options.link
+            })
+        }
+    }
+}
+
 function renderMessage(message) {
 
     let converter = new showdown.Converter({
@@ -31,6 +50,13 @@ function stripHTML(text) {
 
 socket.on("receivedMessage", (message) => {
     renderMessage(message);
+    sendNotification({
+        opt: {
+            body: `Nova mensagem de ${message.author}`,
+        },
+        title: 'Live Chat',
+        link: '/'
+    })
 });
 
 socket.on("previousMessage", (messages) => {
@@ -40,6 +66,8 @@ socket.on("previousMessage", (messages) => {
             renderMessage(message);
         }
     }
+
+
 });
 
 $("#chat").submit(function (event) {
