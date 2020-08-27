@@ -13,10 +13,11 @@ mongoose.connect(`mongodb+srv://ph:${process.env.MONGODB_PASSWORD}@livechat0.69o
     useUnifiedTopology: true
 });
 
-const messageController = require('./src/controllers/messageController')
+const messageController = require('./controllers/messageController')
 
 // Define a pasta estática
-app.use(express.static(__dirname + '/public/'))
+app.use(express.static('./public/'))
+console.log('/public')
 
 // Apagar mensagens
 
@@ -29,7 +30,7 @@ if (date.getHours() >= 3 && date.getDay() >= 30) {
 
 // Rota principal do app
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html')
+    res.sendFile(__dirname + '/views/index.html')
 })
 
 // Conexão com o socket
