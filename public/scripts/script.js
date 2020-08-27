@@ -10,16 +10,14 @@ if (Notification.permission !== 'granted') {
 }
 
 function sendNotification(options) {
-    wsNotification.on('new', () => {
-        let notify = new Notification(options.title, options.opt)
-        if (Notification.permission == 'granted') {
-            if (options.link !== '') {
-                notify.addEventListener('click', () => {
-                    notify.close()
-                    window.focus()
-                    window.location.href = options.link
-                })
-            }
+    let notify = new Notification(options.title, options.opt)
+    if (Notification.permission == 'granted') {
+        if (options.link !== '') {
+            notify.addEventListener('click', () => {
+                notify.close()
+                window.focus()
+                window.location.href = options.link
+            })
         }
     }
 }
