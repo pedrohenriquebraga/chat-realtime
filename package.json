@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node ./src/server.js"
+    "start": "node ./src/server.js",
+    "nodemon": "nodemon ./src/server.js"
   },
   "author": "Pedro Henrique",
   "license": "MIT",

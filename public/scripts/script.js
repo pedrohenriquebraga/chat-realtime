@@ -4,15 +4,15 @@ messages.prop('scrollTop', messages.prop('scrollHeight'))
 
 let socket = io("https://livechat-realtime.herokuapp.com/");
 function renderMessage(message) {
-    
+
     let converter = new showdown.Converter({
         noHeaderId: true,
         headerLevelStart: 6,
         simplifiedAutoLink: true,
-        literalMidWordUnderscores: false,
+        literalMidWordUnderscores: true,
         ghCodeBlocks: false,
         smoothLivePreview: true,
-        simpleLineBreaks: true,
+        simpleLineBreaks: false,
         openLinksInNewWindow: true,
         emoji: true
     })
@@ -30,8 +30,6 @@ function stripHTML(text) {
 }
 
 socket.on("receivedMessage", (message) => {
-
-
     renderMessage(message);
 });
 

@@ -8,6 +8,7 @@ const MessageSchema = new mongoose.Schema({
     },
     message: {
         type: String,
+        max: 500,
         required: true
     },
     hour: {

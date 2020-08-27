@@ -28,6 +28,10 @@ header {
   padding: 15px;
 }
 
+header p {
+  margin: 0;
+}
+
 #home {
   text-align: center;
   width: 200px;
@@ -49,9 +53,11 @@ main {
   box-shadow: 3px 2px 3px #0000006e;
   border-radius: 10px;
   width: 80%;
+  max-width: 800px;
   min-width: 310px;
   padding: 8px;
   margin-top: 30px;
+  border: 1px solid white;
 }
 
 main h1,
@@ -60,6 +66,20 @@ h3,
 p,
 div {
   margin: 15px;
+}
+
+main h1 {
+  text-align: center;
+  font-size: 35px;
+  margin-bottom: 30px;
+}
+
+main h2 {
+  font-size: 25px;
+}
+
+main h3 {
+  font-size: 20px;
 }
 
 main ul {
