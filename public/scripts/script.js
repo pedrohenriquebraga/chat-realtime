@@ -56,7 +56,7 @@ socket.on("receivedMessage", (message) => {
             icon: '/assets/livechat-icon.png'
         },
         title: 'Live Chat',
-        link: '/'
+        link: 'https://livechat-realtime.herokuapp.com/'
     })
 });
 
