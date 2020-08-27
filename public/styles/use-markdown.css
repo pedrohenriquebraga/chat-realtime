@@ -29,6 +29,7 @@ header {
 }
 
 #home {
+  width: 50px;
   text-decoration: none;
   background-color: #5050eb;
   padding: 10px;
