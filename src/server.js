@@ -8,7 +8,7 @@ const io = require('socket.io')(server)
 
 // Iniciando o db
 const mongoose = require('mongoose')
-mongoose.connect(MONGODB_CONNECTION || 'mongodb://localhost:27017/livechat', {
+mongoose.connect(process.env.MONGODB_CONNECTION || 'mongodb://localhost:27017/livechat', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
@@ -34,12 +34,12 @@ if ((date.getHours() >= 3 && date.getDay() >= 30) || messageController.index().l
 
 // Página de Login
 app.get('/login', (req, res) => {
-    return res.send('Faça o Login')
+    return res.sendFile(__dirname + '/views/login-page.html')
 })
 
 // Página de Registro
 app.get('/register', (req, res) => {
-    return res.send('Registre-se no Live Chat!!')
+    return res.sendFile(__dirname + '/views/register-page.html')
 })
 
 // Página do Chat
