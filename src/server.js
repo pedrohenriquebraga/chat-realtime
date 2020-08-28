@@ -8,15 +8,18 @@ const io = require('socket.io')(server)
 
 // Iniciando o db
 const mongoose = require('mongoose')
-mongoose.connect(`mongodb+srv://ph:${process.env.MONGODB_PASSWORD}@livechat0.69okr.gcp.mongodb.net/livechat?retryWrites=true&w=majority` || 'mongodb://localhost:27017/livechat', {
+mongoose.connect(MONGODB_CONNECTION || 'mongodb://localhost:27017/livechat', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
 });
 
 const messageController = require('./controllers/messageController')
 
 // Define a pasta estática
 app.use(express.static('./public/'))
+
+// Ativando o req.body
+app.use(express.urlencoded({ extended: true }))
 
 // Apagar mensagens
 
@@ -27,11 +30,24 @@ if ((date.getHours() >= 3 && date.getDay() >= 30) || messageController.index().l
 }
 
 
-// Rota principal do app
+// Rotas do app
+
+// Página de Login
+app.get('/login', (req, res) => {
+    return res.send('Faça o Login')
+})
+
+// Página de Registro
+app.get('/register', (req, res) => {
+    return res.send('Registre-se no Live Chat!!')
+})
+
+// Página do Chat
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html')
 })
 
+// Página do Markdown
 app.get('/use-markdown', (req, res) => {
     res.sendFile(__dirname + '/views/use-markdown.html')
 })
