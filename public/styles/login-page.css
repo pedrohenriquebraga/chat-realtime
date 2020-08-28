@@ -1,18 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
 
-* {
+*, input, button {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   height: 100%;
-  background: url(/assets/background-chat.svg) no-repeat #060633;
+  background-color: #060633;
   background-size: 500px;
   background-position: 60vw 30vh;
   color: white;
+  overflow: hidden;
 }
 
 header {
@@ -25,4 +29,113 @@ header {
   background-image: linear-gradient(to right, blue, #5050eb, #8c8cf8);
   color: white;
   padding: 15px;
+}
+
+form {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 80vw;
+  min-width: 300px;
+  max-width: 1500px;
+  min-height: fit-content;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  padding: 15px;
+  padding-left: 15px;
+  border-radius: 8px;
+  background: url(/public/assets/background-chat.svg) no-repeat #3434e9;
+  background-size: 400px;
+  background-position: 90% 50%;
+  color: white;
+  border: 1px solid white;
+  animation: form-animation 1200ms ease-in-out;
+}
+
+form h1 {
+  text-align: center;
+}
+
+form fieldset {
+  border: none;
+  width: 50%;
+  min-width: 250px;
+  margin-top: 50px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+form fieldset input, button, a {
+  width: 80%;
+  min-width: 250px;
+  margin-bottom: 15px;
+}
+
+form fieldset input, button {
+  max-width: 400px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+form button {
+  background-color: #010172;
+  color: white;
+  font-weight: 600;
+  transition: 200ms;
+} 
+
+form button:hover {
+  background-color: #030397;
+}
+
+form fieldset a {
+  color: white;
+  text-decoration: none;
+}
+
+form fieldset a:hover {
+  text-decoration: underline;
+}
+
+@media(max-width: 900px) {
+  form {
+    align-items: center;
+    background: none;
+    background-color: #3434e9;
+  }
+
+  form fieldset {
+    align-items: center;
+  }
+
+  form a {
+    text-align: center;
+  }
+}
+
+@media(max-width: 380px) {
+  form h1 {
+    font-size: 23px;
+  }
+}
+
+@keyframes form-animation {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: translateX(50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
 }
