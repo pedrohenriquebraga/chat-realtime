@@ -16,14 +16,23 @@
 
       <fieldset>
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" />
-  
+        <input type="email" name="email" id="email" required  onkeyup="verifyInputs()" />
+
         <label for="password">Senha</label>
-        <input type="password" autocomplete="new-password"  name="password" id="password" />
-  
-        <button type="submit">Entrar</button>
+        <input
+          type="password"
+          autocomplete="current-password"
+          name="password"
+          id="password"
+          onkeyup="verifyInputs()"
+          required
+        />
+
+        <button type="submit" class="">Entrar</button>
         <a href="/register">Não tem conta? <strong>Crie uma agora!</strong></a>
       </fieldset>
     </form>
+
+    <script src="/public/scripts/userPage.js"></script>
   </body>
 </html>
