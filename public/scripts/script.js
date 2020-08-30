@@ -1,5 +1,6 @@
-importScripts()
-importScripts()
+importScripts("https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js")
+importScripts("https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+importScripts("https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js")
 
 
 let messages = $("#messages")
