@@ -1,21 +1,11 @@
-importScripts("https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js")
-importScripts("https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js")
-importScripts("https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js")
-
-
 let messages = $("#messages")
 messages.prop('scrollTop', messages.prop('scrollHeight'))
 
 let socket = io("https://livechat-realtime.herokuapp.com/");
 
-if (!("Notification" in navigator)) {
-    alert('Este browser não suporta notificações!!')
-} else {
-    if (Notification.permission !== 'granted') {
-        alert('Para receber notificações de novas mensagens permita que o site envie notificações!!')
-
-        Notification.requestPermission()
-    }
+if (Notification.permission !== 'granted') {
+    alert('Para receber notificações de novas mensagens permita que o site envie notificações!!')
+    Notification.requestPermission()
 }
 
 function sendNotification(options) {
