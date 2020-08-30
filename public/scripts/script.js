@@ -1,3 +1,7 @@
+importScripts()
+importScripts()
+
+
 let messages = $("#messages")
 messages.prop('scrollTop', messages.prop('scrollHeight'))
 
