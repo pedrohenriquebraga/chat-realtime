@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
 
-
 :root {
   --default-font-size: 16px;
   --bg-color: #060633;
@@ -22,7 +21,6 @@ body {
   height: 100%;
   background-color: var(--bg-color);
 }
-
 
 header {
   width: 100%;
