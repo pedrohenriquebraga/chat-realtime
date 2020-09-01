@@ -3,9 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="Live Chat, conversa em tempo real, conversa privada, conversar com privacidade, como conversar com privacidade, conversa em tempo real, chat publíco"
+    />
     <title>Live Chat</title>
-    <link rel="stylesheet" href="/styles/style.css" />
-    <script data-ad-client="ca-pub-2195308427635463" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta
+      name="description"
+      content="Live Chat, o lugar onde você pode conversar em tempo com seus amigos e familiares com a maior segurança que um site pode prover!!"
+    />
+    <link async rel="stylesheet" href="/styles/style.css" />
+    <!-- <script async data-ad-client="ca-pub-2195308427635463" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
   </head>
 
   <body>
@@ -19,21 +27,56 @@
         id="username"
         placeholder="Digite seu nome"
         required
+        title="Escreva seu nome aqui"
         autofocus
       />
 
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"
+        crossorigin="anonymous"
+      ></script>
+
       <div id="messages"></div>
 
-      <textarea id="sendMessage" placeholder="Digite sua Mensagem (Max. 500 caracteres)" rows="3" cols="6" minlength="1" maxlength="500" ></textarea>
+      <textarea
+        id="sendMessage"
+        placeholder="Digite sua Mensagem (Max. 500 caracteres)"
+        title="Escreva sua mensagem aqui, o máximo é 500 caracteres"
+        rows="3"
+        cols="6"
+        minlength="1"
+        maxlength="500"
+      ></textarea>
       <button type="submit">Enviar Mensagem</button>
-      <a href="/use-markdown" rel="internal">Veja como personalizar suas mensagens</a>
+      <a href="/use-markdown" rel="internal"
+        >Veja como personalizar suas mensagens</a
+      >
     </form>
 
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
-    <script src="/scripts/script.js"></script>
+    <script
+      async
+      src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"
+      crossorigin="anonymous"
+    ></script>
 
+    <div class="config">
+      <h2>Configurações Gerais</h2>
+
+      <input type="radio" name="lightmode" id="lightmode" />
+
+      <span>Tamanho da Fonte</span
+      ><input
+        type="number"
+        name="font-size"
+        id="font-size"
+        min="14"
+        max="25"
+        placeholder="Entre 14 e 25"
+      />
+
+      <button>Salvar Alterações</button>
+    </div>
+
+    <script async src="/scripts/script.js"></script>
   </body>
 </html>

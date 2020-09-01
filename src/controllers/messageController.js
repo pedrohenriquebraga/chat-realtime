@@ -15,10 +15,13 @@ module.exports = {
 
     async saveNewMessage(messageObj) {
         await message.create(messageObj)
-        return console.log('Mensagem salva com sucesso!!')
     },
 
     async removeTheMessages() {
-        await message.remove()
+        await message.remove({}, (err) => {
+            if (err) {
+                return console.log(err)
+            }
+        })
     }
 }
