@@ -3,10 +3,10 @@ messages.scrollBy(0, messages.scrollHeight)
 
 let socket = io("https://livechat-realtime.herokuapp.com/");
 
-if (Notification.permission !== 'granted') {
+/*if (Notification.permission !== 'granted') {
     alert('Para receber notificações de novas mensagens permita que o site envie notificações!!')
     Notification.requestPermission()
-}
+}*/
 
 function newDate() {
     const newDate = new Date();
