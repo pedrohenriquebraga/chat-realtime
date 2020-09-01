@@ -1,7 +1,7 @@
 let messages = document.querySelector("#messages")
 messages.scrollBy(0, messages.scrollHeight)
 
-let socket = io("https://livechat-realtime.herokuapp.com/");
+let socket = io("http://localhost:3000/");
 
 
 function newDate() {
