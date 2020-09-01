@@ -4,28 +4,17 @@ messages.prop('scrollTop', messages.prop('scrollHeight'))
 let socket = io("https://livechat-realtime.herokuapp.com");
 
 
-function newDate() {
-    const newDate = new Date();
-    let hours = {
-        hour: newDate.getHours().toString(),
-        minute: newDate.getMinutes().toString(),
-        second: newDate.getSeconds().toString(),
+function sendNotification(options) {
+    let notify = new Notification(options.title, options.opt)
+    if (Notification.permission == 'granted') {
+        if (options.link !== '') {
+            notify.addEventListener('click', () => {
+                notify.close()
+                window.focus()
+                window.location.href = options.link
+            })
+        }
     }
-
-    let dayAndMonth = {
-        day: newDate.getDate(),
-        month: newDate.getMonth() + 1
-    }
-
-    hours.hour = hours.hour <= 9 ? '0' + hours.hour : hours.hour
-    hours.minute = hours.minute <= 9 ? '0' + hours.minute : hours.minute
-    hours.second = hours.second <= 9 ? '0' + hours.second : hours.second
-
-    dayAndMonth.day = dayAndMonth.day <= 9 ? '0' + dayAndMonth.day : dayAndMonth.day
-    dayAndMonth.month = dayAndMonth.month <= 9 ? '0' + dayAndMonth.month : dayAndMonth.month
-
-    return `${hours.hour}:${hours.minute}:${hours.second} (${dayAndMonth.day}/${dayAndMonth.month})`
-
 }
 
 function renderMessage(message) {
