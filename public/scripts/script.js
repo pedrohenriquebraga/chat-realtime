@@ -1,7 +1,7 @@
 let messages = $("#messages")
 messages.prop('scrollTop', messages.prop('scrollHeight'))
 
-let socket = io("https://livechat-realtime.herokuapp.com");
+let socket = io("https://livechat-realtime.herokuapp.com/");
 
 
 function sendNotification(options) {

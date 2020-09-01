@@ -8,10 +8,9 @@ const io = require('socket.io')(server)
 
 // Iniciando o db
 const mongoose = require('mongoose')
-mongoose.connect(process.env.MONGODB_CONNECTION, {
+mongoose.connect(`mongodb+srv://ph:${process.env.MONGODB_PASSWORD}@livechat0.69okr.gcp.mongodb.net/livechat?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useMongoClient: true
+    useUnifiedTopology: true
 });
 
 const messageController = require('./controllers/messageController')
