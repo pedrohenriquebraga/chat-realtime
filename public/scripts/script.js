@@ -31,7 +31,7 @@ function renderMessage(message) {
         emoji: true
     })
 
-    message.message = converter.makeHtml(message.message)
+    message.message = await converter.makeHtml(message.message)
 
     messages.append(`<div class="message"><strong class="name">${message.author}</strong>${message.message}<span id="date">${message.hour}</span></div>`);
 
@@ -65,26 +65,8 @@ $("#chat").submit(function (event) {
     $("#sendMessage").val("");
 
     if (author.length && message.length) {
-        const newDate = new Date();
-        let hours = {
-            hour: newDate.getHours().toString(),
-            minute: newDate.getMinutes().toString(),
-            second: newDate.getSeconds().toString(),
-        }
 
-        let dayAndMonth = {
-            day: newDate.getDate(),
-            month: newDate.getMonth() + 1
-        }
-
-        hours.hour = hours.hour <= 9 ? '0' + hours.hour : hours.hour
-        hours.minute = hours.minute <= 9 ? '0' + hours.minute : hours.minute
-        hours.second = hours.second <= 9 ? '0' + hours.second : hours.second
-
-        dayAndMonth.day = dayAndMonth.day <= 9 ? '0' + dayAndMonth.day : dayAndMonth.day
-        dayAndMonth.month = dayAndMonth.month <= 9 ? '0' + dayAndMonth.month : dayAndMonth.month
-
-        let date = `${hours.hour}:${hours.minute}:${hours.second} (${dayAndMonth.day}/${dayAndMonth.month})`
+        let date = newDate()
 
         var messageObj = {
             author: author,
