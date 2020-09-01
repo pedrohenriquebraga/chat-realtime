@@ -18,8 +18,6 @@ const messageController = require('./controllers/messageController')
 // Define a pasta estática
 app.use(express.static('./public/'))
 
-// Ativando o req.body
-app.use(express.urlencoded({ extended: true }))
 
 // Apagar mensagens
 
@@ -51,7 +49,7 @@ io.on('connection', async socket => {
     socket.emit("previousMessage", await messageController.index())
 
     // Envio das novas mensagens
-    socket.on('sendMessage', async data => {
+    socket.on('sendMessage', data => {
         messageController.saveNewMessage(data)
         socket.broadcast.emit("receivedMessage", data)
     })
