@@ -1,4 +1,5 @@
 // Requires do servidor
+
 require('dotenv').config()
 const express = require('express')
 const app = express()
@@ -13,7 +14,6 @@ mongoose.connect(process.env.MONGODB_CONNECTION, {
     useMongoClient: true
 });
 
-
 const messageController = require('./controllers/messageController')
 
 // Define a pasta estática
@@ -25,12 +25,21 @@ app.use(express.static('./public/'))
 const date = new Date
 
 if ((date.getHours() >= 11 && date.getDay() >= 30) || messageController.index().length >= 500) {
-   messageController.removeTheMessages()
+    messageController.removeTheMessages()
 }
 
 
 // Rotas do app
 
+// Página de Login
+app.get('/login', (req, res) => {
+    return res.sendFile(__dirname + '/views/login-page.html')
+})
+
+// Página de Registro
+app.get('/register', (req, res) => {
+    return res.sendFile(__dirname + '/views/register-page.html')
+})
 
 // Página do Chat
 app.get('/', (req, res) => {

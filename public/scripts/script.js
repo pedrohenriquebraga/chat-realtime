@@ -1,5 +1,5 @@
-let messages = document.querySelector("#messages")
-messages.scrollBy(0, messages.scrollHeight)
+let messages = $("#messages")
+messages.prop('scrollTop', messages.prop('scrollHeight'))
 
 let socket = io("https://livechat-realtime.herokuapp.com");
 
@@ -44,21 +44,21 @@ function renderMessage(message) {
 
     message.message = converter.makeHtml(message.message)
 
-    messages.innerHTML += `<div class="message"><strong class="name">${message.author}</strong>${message.message}<span id="date">${message.hour}</span></div>`;
+    messages.append(`<div class="message"><strong class="name">${message.author}</strong>${message.message}<span id="date">${message.hour}</span></div>`);
 
-    messages.scrollBy(0, messages.scrollHeight)
+    messages.prop('scrollTop', messages.prop('scrollHeight'))
 
 }
 function stripHTML(text) {
     return text.replace(/<.*?>/gim, '').replace(/^#/gim, '\\#')
 }
 
-socket.on("receivedMessage", async message => {
+socket.on("receivedMessage", (message) => {
     renderMessage(message);
 });
 
-socket.on("previousMessage", async messages => {
-    document.querySelector('#messages').value = ''
+socket.on("previousMessage", (messages) => {
+    $('#messages').text('')
     if (messages.length > 0) {
         for (message of messages) {
             renderMessage(message);
@@ -68,16 +68,34 @@ socket.on("previousMessage", async messages => {
 
 });
 
-document.querySelector("#chat").addEventListener('submit', async event => {
+$("#chat").submit(function (event) {
     event.preventDefault();
 
-    let author = await stripHTML(document.querySelector("#username").value);
-    let message = await stripHTML(document.querySelector("#sendMessage").value);
-    document.querySelector("#sendMessage").value = '';
+    let author = stripHTML($("#username").val());
+    let message = stripHTML($("#sendMessage").val());
+    $("#sendMessage").val("");
 
     if (author.length && message.length) {
+        const newDate = new Date();
+        let hours = {
+            hour: newDate.getHours().toString(),
+            minute: newDate.getMinutes().toString(),
+            second: newDate.getSeconds().toString(),
+        }
 
-        let date = await newDate()
+        let dayAndMonth = {
+            day: newDate.getDate(),
+            month: newDate.getMonth() + 1
+        }
+
+        hours.hour = hours.hour <= 9 ? '0' + hours.hour : hours.hour
+        hours.minute = hours.minute <= 9 ? '0' + hours.minute : hours.minute
+        hours.second = hours.second <= 9 ? '0' + hours.second : hours.second
+
+        dayAndMonth.day = dayAndMonth.day <= 9 ? '0' + dayAndMonth.day : dayAndMonth.day
+        dayAndMonth.month = dayAndMonth.month <= 9 ? '0' + dayAndMonth.month : dayAndMonth.month
+
+        let date = `${hours.hour}:${hours.minute}:${hours.second} (${dayAndMonth.day}/${dayAndMonth.month})`
 
         var messageObj = {
             author: author,
@@ -86,5 +104,5 @@ document.querySelector("#chat").addEventListener('submit', async event => {
         };
     }
     renderMessage(messageObj);
-    await socket.emit("sendMessage", messageObj);
+    socket.emit("sendMessage", messageObj);
 });
