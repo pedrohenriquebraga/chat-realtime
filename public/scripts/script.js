@@ -45,7 +45,7 @@ async function sendNotification(options) {
     }
 }
 
-async function renderMessage(message) {
+function renderMessage(message) {
 
     let converter = new showdown.Converter({
         noHeaderId: true,
@@ -66,8 +66,7 @@ async function renderMessage(message) {
     messages.scrollBy(0, messages.scrollHeight)
 
 }
-
-async function stripHTML(text) {
+function stripHTML(text) {
     return text.replace(/<.*?>/gim, '').replace(/^#/gim, '\\#')
 }
 
