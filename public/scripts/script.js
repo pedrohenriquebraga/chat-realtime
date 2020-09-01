@@ -59,7 +59,7 @@ async function renderMessage(message) {
         emoji: true
     })
 
-    message.message = converter.makeHtml(message.message)
+    message.message = await converter.makeHtml(message.message)
 
     messages.innerHTML += `<div class="message"><strong class="name">${message.author}</strong>${message.message}<span id="date">${message.hour}</span></div>`;
 
@@ -103,7 +103,7 @@ document.querySelector("#chat").addEventListener('submit', async event => {
 
     if (author.length && message.length) {
 
-        let date = await newDate()
+        let date = newDate()
 
         var messageObj = {
             author: author,
