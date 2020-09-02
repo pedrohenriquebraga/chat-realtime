@@ -8,6 +8,21 @@ if (Notification.permission !== 'granted') {
     Notification.requestPermission()
 }
 
+function convertMarkdownToHTML(text) {
+    let converter = new showdown.Converter({
+        noHeaderId: true,
+        headerLevelStart: 6,
+        simplifiedAutoLink: true,
+        literalMidWordUnderscores: true,
+        ghCodeBlocks: false,
+        smoothLivePreview: true,
+        simpleLineBreaks: true,
+        openLinksInNewWindow: true,
+        emoji: true
+    })
+    return converter.makeHtml(text)
+}
+
 function newDate() {
     const newDate = new Date();
     let hours = {
@@ -15,12 +30,10 @@ function newDate() {
         minute: newDate.getMinutes().toString(),
         second: newDate.getSeconds().toString(),
     }
-
     let dayAndMonth = {
         day: newDate.getDate(),
         month: newDate.getMonth() + 1
     }
-
     hours.hour = hours.hour <= 9 ? '0' + hours.hour : hours.hour
     hours.minute = hours.minute <= 9 ? '0' + hours.minute : hours.minute
     hours.second = hours.second <= 9 ? '0' + hours.second : hours.second
@@ -29,7 +42,6 @@ function newDate() {
     dayAndMonth.month = dayAndMonth.month <= 9 ? '0' + dayAndMonth.month : dayAndMonth.month
 
     return `${hours.hour}:${hours.minute}:${hours.second} (${dayAndMonth.day}/${dayAndMonth.month})`
-
 }
 
 async function sendNotification(options) {
@@ -47,24 +59,10 @@ async function sendNotification(options) {
 
 async function renderMessage(message) {
 
-    let converter = new showdown.Converter({
-        noHeaderId: true,
-        headerLevelStart: 6,
-        simplifiedAutoLink: true,
-        literalMidWordUnderscores: true,
-        ghCodeBlocks: false,
-        smoothLivePreview: true,
-        simpleLineBreaks: false,
-        openLinksInNewWindow: true,
-        emoji: true
-    })
-
-    message.message = await converter.makeHtml(message.message)
+    message.message = convertMarkdownToHTML(message.message)
 
     messages.innerHTML += `<div class="message"><strong class="name">${message.author}</strong>${message.message}<span id="date">${message.hour}</span></div>`;
-
     messages.scrollBy(0, messages.scrollHeight)
-
 }
 
 async function stripHTML(text) {
@@ -90,21 +88,15 @@ socket.on("previousMessage", async messages => {
             renderMessage(message);
         }
     }
-
-
 });
 
 document.querySelector("#chat").addEventListener('submit', async event => {
     event.preventDefault();
-
     let author = await stripHTML(document.querySelector("#username").value);
     let message = await stripHTML(document.querySelector("#sendMessage").value);
     document.querySelector("#sendMessage").value = '';
-
     if (author.length && message.length) {
-
         let date = newDate()
-
         var messageObj = {
             author: author,
             message: message,

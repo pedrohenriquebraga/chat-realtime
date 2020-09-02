@@ -2,12 +2,15 @@
 
 require('dotenv').config()
 const express = require('express')
+const compression = require('compression')
 const app = express()
 const server = require('http').createServer(app)
 const io = require('socket.io')(server)
 
 // Iniciando o db
 const mongoose = require('mongoose')
+const zlib = require('zlib')
+
 mongoose.connect(`mongodb+srv://ph:${process.env.MONGODB_PASSWORD}@livechat0.69okr.gcp.mongodb.net/livechat?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -16,8 +19,8 @@ mongoose.connect(`mongodb+srv://ph:${process.env.MONGODB_PASSWORD}@livechat0.69o
 const messageController = require('./controllers/messageController')
 
 // Define a pasta estática
+app.use(compression({ level:5 }))
 app.use(express.static('./public/'))
-
 
 // Apagar mensagens
 
@@ -29,16 +32,6 @@ if ((date.getHours() >= 11 && date.getDay() >= 30) || messageController.index().
 
 
 // Rotas do app
-
-// Página de Login
-app.get('/login', (req, res) => {
-    return res.sendFile(__dirname + '/views/login-page.html')
-})
-
-// Página de Registro
-app.get('/register', (req, res) => {
-    return res.sendFile(__dirname + '/views/register-page.html')
-})
 
 // Página do Chat
 app.get('/', (req, res) => {
@@ -58,7 +51,7 @@ io.on('connection', async socket => {
     socket.emit("previousMessage", await messageController.index())
 
     // Envio das novas mensagens
-    socket.on('sendMessage', data => {
+    socket.on('sendMessage', async data => {
         messageController.saveNewMessage(data)
         socket.broadcast.emit("receivedMessage", data)
     })
