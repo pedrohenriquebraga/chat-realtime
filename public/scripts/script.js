@@ -1,9 +1,9 @@
 let messages = document.querySelector("#messages")
 messages.scrollBy(0, messages.scrollHeight)
 
-let socket = io("https://livechat-realtime.herokuapp.com/");
+document.querySelector("#username").value = localStorage.getItem('username') || '';
 
-if (Notification.permission !== 'granted') {
+if (Notification.permission !== 'granted' && 1 == 3) {
     alert('Para receber notificações de novas mensagens permita que o site envie notificações!!')
     Notification.requestPermission()
 }
@@ -65,9 +65,12 @@ async function renderMessage(message) {
     messages.scrollBy(0, messages.scrollHeight)
 }
 
+
 async function stripHTML(text) {
     return text.replace(/<.*?>/gim, '').replace(/^#/gim, '\\#')
 }
+
+let socket = io("https://livechat-realtime.herokuapp.com/")
 
 socket.on("receivedMessage", async message => {
     renderMessage(message);
@@ -95,8 +98,10 @@ document.querySelector("#chat").addEventListener('submit', async event => {
     let author = await stripHTML(document.querySelector("#username").value);
     let message = await stripHTML(document.querySelector("#sendMessage").value);
     document.querySelector("#sendMessage").value = '';
+
     if (author.length && message.length) {
         let date = newDate()
+        localStorage.setItem('username', author)
         var messageObj = {
             author: author,
             message: message,

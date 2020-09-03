@@ -21,7 +21,7 @@ module.exports = {
             headerLevelStart: 6,
             simplifiedAutoLink: true,
             literalMidWordUnderscores: true,
-            ghCodeBlocks: false,
+            ghCodeBlocks: true,
             smoothLivePreview: true,
             simpleLineBreaks: true,
             openLinksInNewWindow: true,

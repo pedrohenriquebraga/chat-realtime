@@ -19,7 +19,7 @@ mongoose.connect(`mongodb+srv://ph:${process.env.MONGODB_PASSWORD}@livechat0.69o
 const messageController = require('./controllers/messageController')
 
 // Define a pasta estática
-app.use(compression({ level:5 }))
+app.use(compression({ level: 9 }))
 app.use(express.static('./public/'))
 
 // Apagar mensagens
