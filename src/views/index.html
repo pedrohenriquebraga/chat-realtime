@@ -1,91 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
-    <meta
-      name="keywords"
-      content="Live Chat, conversa em tempo real, conversa privada, conversar com privacidade, como conversar com privacidade, conversa em tempo real, chat publíco"
-    />
+    <meta name="keywords" content="Live Chat, conversa em tempo real, conversa privada, conversar com privacidade, como conversar com privacidade, conversa em tempo real, chat publíco" />
     <title>Live Chat</title>
-    <meta
-      name="description"
-      content="Live Chat, o lugar onde você pode conversar em tempo com seus amigos e familiares com a maior segurança que um site pode prover!!"
-    />
-    <link
-      async
-      rel="stylesheet preconnect"
-      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"
-    />
-    <link async rel="stylesheet" href="/styles/style.css" />
-    <!-- <script async data-ad-client="ca-pub-2195308427635463" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
-  </head>
+    <meta name="description" content="Live Chat, o lugar onde você pode conversar em tempo com seus amigos e familiares com a maior segurança que um site pode prover!!" />
+    <link defer rel="stylesheet" href="/styles/style.css" />
+    <link defer rel="stylesheet preconnect" as="font" href=" https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap " />
+    <!-- <script async data-ad-client="ca-pub-2195308427635463 " async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js "></script> -->
+</head>
 
-  <body>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"
-      crossorigin="anonymous"
-      rel="preload"
-      as="script"
-    ></script>
+<body>
     <header>
-      <h1>Live Chat</h1>
-      <p>Converse em tempo real!</p>
+        <h1>Live Chat</h1>
+        <p>Converse em tempo real!</p>
     </header>
     <form id="chat">
-      <input
-        type="text"
-        id="username"
-        placeholder="Digite seu nome"
-        required
-        title="Escreva seu nome aqui"
-        autofocus
-      />
-
-      <div id="messages"></div>
-
-      <textarea
-        id="sendMessage"
-        placeholder="Digite sua Mensagem (Max. 500 caracteres)"
-        title="Escreva sua mensagem aqui, o máximo é 500 caracteres"
-        rows="3"
-        cols="6"
-        minlength="1"
-        maxlength="500"
-      ></textarea>
-      <button type="submit">Enviar Mensagem</button>
-      <a href="/use-markdown" rel="internal"
-        >Veja como personalizar suas mensagens</a
+        <input type="text" id="username" placeholder="Digite seu nome " required title="Escreva seu nome aqui " autofocus />
+        <div id="messages"></div>
+        <textarea id="sendMessage" placeholder="Digite sua Mensagem (Max. 500 caracteres)" title="Escreva sua mensagem aqui, o máximo é 500 caracteres" rows="3" cols="6" minlength="1" maxlength="500" required></textarea>
+        <button type="submit">Enviar Mensagem</button>
+        <a href="/use-markdown" rel="internal ">Veja como personalizar suas mensagens</a
       >
     </form>
-
     <script
-      async
-      rel="preload"
+      defer
+      rel="preconnect"
       as="script"
       src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"
       crossorigin="anonymous"
     ></script>
 
-    <div class="config">
-      <h2>Configurações Gerais</h2>
-
-      <input type="radio" name="lightmode" id="lightmode" />
-
-      <span>Tamanho da Fonte</span
-      ><input
-        type="number"
-        name="font-size"
-        id="font-size"
-        min="14"
-        max="25"
-        placeholder="Entre 14 e 25"
-      />
-
-      <button>Salvar Alterações</button>
-    </div>
-
-    <script async rel="preload" as="script" src="/scripts/script.js"></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      rel="preconnect "
+      as="script "
+      src="/scripts/script.js "
+    ></script>
   </body>
 </html>
