@@ -19,6 +19,7 @@
         <p>Converse em tempo real!</p>
     </header>
     <form id="chat">
+        <span class="notice">Lembre-se de respeitar a todos!!</span>
         <input type="text" id="username" placeholder="Digite seu nome " required title="Escreva seu nome aqui" autofocus />
         <div id="messages"></div>
         <textarea id="sendMessage" placeholder="Digite sua Mensagem (Max. 500 caracteres)" title="Escreva sua mensagem aqui, o máximo é 500 caracteres" rows="3" cols="6" minlength="1" maxlength="500" required></textarea>
@@ -26,23 +27,10 @@
         <a href="/use-markdown" rel="internal ">Veja como personalizar suas mensagens</a
       >
     </form>
-    <script
-      rel="preconnect"
-      as="script"
-      src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"
-      crossorigin="anonymous"
-    ></script>
 
-    <script
-      defer
-      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      defer
-      rel="preconnect"
-      as="script"
-      src="/scripts/script.js"
-    ></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" crossorigin="anonymous"></script>
+    <script src="/scripts/script.js"></script>
   </body>
 </html>

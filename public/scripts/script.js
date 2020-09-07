@@ -3,7 +3,7 @@ messages.scrollBy(0, messages.scrollHeight)
 
 document.querySelector("#username").value = localStorage.getItem('username') || '';
 
-if (Notification.permission !== 'granted' && 1 == 3) {
+if (Notification.permission !== 'granted') {
     alert('Para receber notificações de novas mensagens permita que o site envie notificações!!')
     Notification.requestPermission()
 }
@@ -58,13 +58,9 @@ async function sendNotification(options) {
 }
 
 async function renderMessage(message) {
-
-    message.message = convertMarkdownToHTML(message.message)
-
-    messages.innerHTML += `<div class="message"><strong class="name">${message.author}</strong>${message.message}<span id="date">${message.hour}</span></div>`;
+    messages.innerHTML += `<div class="message"><strong class="name">${message.author}:</strong>${convertMarkdownToHTML(message.message)}<span id="date">${message.hour}</span></div>`;
     messages.scrollBy(0, messages.scrollHeight)
 }
-
 
 async function stripHTML(text) {
     return text.replace(/<.*?>/gim, '').replace(/^#/gim, '\\#')
@@ -97,7 +93,7 @@ document.querySelector("#chat").addEventListener('submit', async event => {
     event.preventDefault();
     let author = await stripHTML(document.querySelector("#username").value);
     let message = await stripHTML(document.querySelector("#sendMessage").value);
-    document.querySelector("#sendMessage").value = '';
+    document.querySelector("#sendMessage").value = ''
 
     if (author.length && message.length) {
         let date = newDate()

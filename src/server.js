@@ -19,14 +19,13 @@ mongoose.connect(`mongodb+srv://ph:${process.env.MONGODB_PASSWORD}@livechat0.69o
 const messageController = require('./controllers/messageController')
 
 // Define a pasta estática
-app.use(compression({ level: 9 }))
+app.use(compression({ level: 5 }))
 app.use(express.static('./public/'))
 
 // Apagar mensagens
 
 const date = new Date
-
-if ((date.getHours() >= 11 && date.getDay() >= 30) || messageController.index().length >= 500) {
+if ((date.getHours() == 3 && date.getMinutes() == 0 && date.getSeconds() == 0 && date.getDate() == 30) || messageController.index().length >= 500) {
     messageController.removeTheMessages()
 }
 
@@ -46,17 +45,17 @@ app.get('/use-markdown', (req, res) => {
 // Conexão com o socket
 io.on('connection', async socket => {
     console.log('Socket conectado: ' + socket.id)
-
+    
     // Envio das mensagens antigas
     socket.emit("previousMessage", await messageController.index())
 
     // Envio das novas mensagens
     socket.on('sendMessage', async data => {
+        console.log(data)
         messageController.saveNewMessage(data)
         socket.broadcast.emit("receivedMessage", data)
     })
 })
-
 
 // Ouvi a porta 3000 do servidor
 server.listen(process.env.PORT || 3000)
