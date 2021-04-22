@@ -66,7 +66,7 @@ async function stripHTML(text) {
     return text.replace(/<.*?>/gim, '').replace(/^#/gim, '\\#')
 }
 
-let socket = io("https://livechat-realtime.herokuapp.com/")
+let socket = io("/")
 
 socket.on("receivedMessage", async message => {
     renderMessage(message);
